@@ -3,12 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { profile } from "../site-data";
+import { Button, ButtonLink } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
-  { href: "/experience", label: "Skills + Experience" },
+  { href: "/experience", label: "Skills + Expericence" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -18,79 +21,124 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <div className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_top_left,_rgba(196,231,255,0.9),_transparent_38%),radial-gradient(circle_at_top_right,_rgba(255,214,179,0.8),_transparent_32%),linear-gradient(180deg,_rgba(250,247,242,0.95),_rgba(250,247,242,0))]" />
-      <header className="mx-auto w-full max-w-7xl px-6 pt-6 sm:px-10 lg:px-12">
-        <div className="border-b border-black/10 py-5">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/"
-              className="text-sm font-semibold tracking-[0.22em] text-stone-900"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              PORTFOLIO
-            </Link>
-            <button
-              type="button"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-nav"
-              onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-stone-300 text-stone-900 transition hover:bg-stone-100 md:hidden"
-            >
-              <span className="sr-only">
-                {mobileMenuOpen
-                  ? "Close navigation menu"
-                  : "Open navigation menu"}
-              </span>
-              <span className="text-lg leading-none">
-                {mobileMenuOpen ? "×" : "☰"}
-              </span>
-            </button>
-            <nav className="hidden items-center gap-8 text-sm text-stone-700 md:flex">
-              {navItems.map((item) => (
+      <header className="sticky top-0 z-50 border-b border-black/10 bg-white/90 backdrop-blur">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-8 lg:px-10">
+          <Link
+            href="/"
+            className="flex items-center gap-3"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold tracking-[0.18em] text-white">
+              {profile.shortName}
+            </div>
+            <div className="leading-tight">
+              <p className="text-sm font-semibold text-black">{profile.name}</p>
+              <p className="text-xs text-black/60">{profile.title}</p>
+            </div>
+          </Link>
+
+          <nav className="hidden items-center gap-1 md:flex">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+
+              return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="transition hover:text-stone-950"
+                  className={cn(
+                    "rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-blue-500  text-white"
+                      : "text-black/70 hover:bg-blue-50 hover:text-black",
+                  )}
                 >
                   {item.label}
                 </Link>
-              ))}
-            </nav>
-          </div>
-          <nav
-            id="mobile-nav"
-            className={`grid overflow-hidden transition-[grid-template-rows,opacity,margin] duration-300 md:hidden ${
-              mobileMenuOpen
-                ? "mt-4 grid-rows-[1fr] opacity-100"
-                : "mt-0 grid-rows-[0fr] opacity-0"
-            }`}
-          >
-            <div className="min-h-0">
-              <div className="rounded-2xl border border-stone-200 bg-white/90 p-2 shadow-[0_18px_50px_rgba(28,25,23,0.08)] backdrop-blur">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`block rounded-xl px-4 py-3 text-sm transition ${
-                      pathname === item.href
-                        ? "bg-background"
-                        : "text-stone-700 hover:bg-stone-100 hover:text-stone-950"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
+              );
+            })}
           </nav>
+
+          <div className="flex items-center gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
+              className="md:hidden"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                {mobileMenuOpen ? (
+                  <>
+                    <path d="M6 6l12 12" />
+                    <path d="M18 6L6 18" />
+                  </>
+                ) : (
+                  <>
+                    <path d="M4 7h16" />
+                    <path d="M4 12h16" />
+                    <path d="M4 17h16" />
+                  </>
+                )}
+              </svg>
+            </Button>
+          </div>
+          <div className="hidden  md:flex">
+            <ButtonLink href="/cv.pdf" size="lg" target="_blank">
+              View CV
+            </ButtonLink>
+          </div>
+        </div>
+
+        <div
+          id="mobile-nav"
+          className={cn(
+            "mx-auto max-w-7xl overflow-hidden px-4 transition-all duration-300 sm:px-8 md:hidden",
+            mobileMenuOpen ? "max-h-96 pb-4" : "max-h-0 pb-0",
+          )}
+        >
+          <div className="rounded-2xl border border-black/10 bg-white p-2">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={cn(
+                    "block rounded-xl px-4 py-3 text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-blue-500 text-white"
+                      : "text-black/70 hover:bg-blue-50 hover:text-black",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </header>
+
       {children}
-      <footer className="mx-auto mt-auto w-full max-w-7xl px-6 pb-10 pt-4 sm:px-10 lg:px-12">
-        <div className="border-t border-black/10 pt-6 text-sm text-stone-500">
-          Full Stack JavaScript Developer | MERN, Next.js, React Native
+
+      <footer className="border-t border-black/10 bg-white/80">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-8 text-sm text-black/60 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+          <p>
+            {profile.name} | {profile.title}
+          </p>
+          {/* <p>{profile.availability}</p> */}
         </div>
       </footer>
     </>

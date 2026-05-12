@@ -1,31 +1,62 @@
 import { PageHero } from "../components/page-hero";
+import { Badge } from "../components/ui/badge";
+import { Card, CardContent } from "../components/ui/card";
+import { highlights, profile, services } from "../site-data";
 
 export default function AboutPage() {
   return (
-    <main className="pb-8">
+    <main className="pb-14">
       <PageHero
         eyebrow="About"
-        title="Full stack JavaScript developer."
-        description="I build web and mobile applications using JavaScript and the MERN stack, with strong experience in React, Next.js, and React Native."
+        title=""
+        description="A passionate developer dedicated to crafting high-quality software solutions"
       />
 
-      <section className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-8 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:px-12">
-        <div className="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-[0_18px_50px_rgba(28,25,23,0.06)]">
-          <h2 className="font-serif text-3xl text-stone-950">Who I Am</h2>
-          <p className="mt-4 text-base leading-8 text-stone-700">
-            I am a student from University of Computer Studies (Taungoo) who
-            enjoys building applications that combine clean user experience with
-            practical functionality. My focus is on improving my skills by
-            building real projects and learning modern development tools.
-          </p>
-        </div>
-        <div className="rounded-[2rem] bg-stone-950 p-8 text-stone-50">
-          <h2 className="font-serif text-3xl">What I Care About</h2>
-          <p className="mt-4 text-base leading-8 text-stone-300">
-            I care about performance, usability, and structure. Whether I am
-            working on frontend interfaces, backend APIs, or mobile features, I
-            aim to keep the product simple, scalable, and easy to grow.
-          </p>
+      <section className="mx-auto grid w-full max-w-7xl gap-6 px-4 py-6 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-10">
+        <Card>
+          <CardContent className="p-8">
+            <Badge>Who I Am</Badge>
+            <div className="mt-5 space-y-4 text-base leading-8 text-black/65">
+              {profile.about.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="border-blue-500/20 bg-blue-500">
+          <CardContent className="space-y-4 p-8">
+            <Badge>Highlights</Badge>
+            {highlights.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-xl border border-white/20 p-5"
+              >
+                <p className="text-3xl font-semibold">{item.value}</p>
+                <p className="mt-2 text-sm ">{item.label}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-8 lg:px-10">
+        <div className="grid gap-6 lg:grid-cols-3">
+          {services.map((service) => (
+            <Card key={service.title}>
+              <CardContent className="p-8">
+                <p className="text-sm uppercase tracking-[0.22em] text-blue-500">
+                  Strength
+                </p>
+                <h2 className="mt-4 text-2xl font-semibold text-black">
+                  {service.title}
+                </h2>
+                <p className="mt-4 text-base leading-8 text-black/65">
+                  {service.description}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
     </main>

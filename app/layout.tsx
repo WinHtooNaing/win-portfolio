@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { SiteShell } from "./components/site-shell";
+import { profile } from "./site-data";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Full Stack JavaScript Developer",
+  title: `${profile.name} | ${profile.title}`,
   description:
-    "A modern portfolio for a full stack JavaScript developer working with MERN stack, Next.js, and React Native.",
+    "Portfolio for Win Htoo Naing featuring full-stack projects, frontend work, and practical experience with Next.js, React, Node.js, and React Native.",
 };
 
 export default function RootLayout({
