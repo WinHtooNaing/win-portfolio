@@ -295,6 +295,16 @@ export const experience = [
 
 export const projects = [
   {
+    title: "Supermarket POS System",
+    description:
+      "A modern supermarket POS and inventory management system with product tracking, category management, cashier workflows, sales monitoring, and responsive dashboards for daily retail operations. Demo Login → Email: winhtoonaing | Password: winhtoonaing",
+    stack: ["Next.js", "Tailwind CSS", "Shadcn UI", "Drizzle ORM", "NeonDB"],
+    image: "/projects/supermarket.png",
+    imageAlt: "Preview card for Supermarket POS System",
+    githubUrl: "https://github.com/WinHtooNaing/supermarket-system",
+    liveUrl: "https://supermarket-system-7b8m.vercel.app",
+  },
+  {
     title: "Market.io",
     description:
       "A MERN business platform with authentication, analytics, role-aware dashboards, and practical operations workflows.",
