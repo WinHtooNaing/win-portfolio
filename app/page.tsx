@@ -12,6 +12,7 @@ import {
 import { Badge } from "./components/ui/badge";
 import { ButtonLink } from "./components/ui/button";
 import { Card } from "./components/ui/card";
+import { Reveal } from "./components/motion/reveal";
 
 const featuredProjects = projects.slice(0, 3);
 
@@ -21,7 +22,7 @@ export default function Home() {
       <section className="relative isolate overflow-hidden">
         <div className="site-grid absolute inset-0 -z-10" aria-hidden="true" />
         <div className="mx-auto grid min-h-[min(740px,calc(100svh-5rem))] w-full max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-20">
-          <div className="motion-enter">
+          <Reveal animateOnLoad>
             <Badge>
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-indigo-500" />
               {profile.availability}
@@ -53,9 +54,13 @@ export default function Home() {
               <span className="h-1 w-1 rounded-full bg-indigo-500" />
               <span>Frontend focus · Full-stack capability</span>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="motion-enter motion-delay-2 relative mx-auto w-full max-w-[500px] lg:ml-auto">
+          <Reveal
+            className="relative mx-auto w-full max-w-[500px] lg:ml-auto"
+            delay={0.18}
+            animateOnLoad
+          >
             <div className="hero-art" aria-hidden="true">
               <div className="hero-art__grid" aria-hidden="true" />
               <div className="hero-art__glow" aria-hidden="true" />
@@ -87,22 +92,24 @@ export default function Home() {
                 Frontend focused
               </span>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-5 py-8 sm:px-8 lg:px-12">
         <div className="editorial-card grid gap-px overflow-hidden rounded-3xl sm:grid-cols-3">
           {highlights.map((item, index) => (
-            <div key={item.label} className="bg-white/[0.015] p-6 sm:p-8">
-              <p className="text-xs uppercase tracking-[0.2em] text-stone-500">
-                0{index + 1} <span className="mx-1.5 text-indigo-500">/</span>{" "}
-                {item.label}
-              </p>
-              <p className="mt-4 text-2xl font-semibold tracking-tight text-stone-100 sm:text-3xl">
-                {item.value}
-              </p>
-            </div>
+            <Reveal key={item.label} delay={index * 0.1}>
+              <div className="bg-white/[0.015] p-6 sm:p-8">
+                <p className="text-xs uppercase tracking-[0.2em] text-stone-500">
+                  0{index + 1} <span className="mx-1.5 text-indigo-500">/</span>{" "}
+                  {item.label}
+                </p>
+                <p className="mt-4 text-2xl font-semibold tracking-tight text-stone-100 sm:text-3xl">
+                  {item.value}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -124,7 +131,8 @@ export default function Home() {
         </div>
         <div className="grid gap-5 lg:grid-cols-3">
           {featuredProjects.map((project, index) => (
-            <Card key={project.title} className="overflow-hidden">
+            <Reveal key={project.title} delay={index * 0.12}>
+              <Card className="h-full overflow-hidden">
               <Link
                 href={project.liveUrl}
                 target="_blank"
@@ -179,13 +187,14 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-            </Card>
+              </Card>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="border-y border-slate-200/80 bg-white/40 backdrop-blur-xl">
-        <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-12 lg:py-24">
+        <Reveal className="mx-auto grid w-full max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-12 lg:py-24">
           <div>
             <Badge>How I work</Badge>
             <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.055em] text-stone-100 sm:text-5xl">
@@ -205,10 +214,8 @@ export default function Home() {
           </div>
           <div className="grid gap-3 sm:grid-cols-3">
             {services.map((service, index) => (
-              <div
-                key={service.title}
-                className="border-t border-white/15 py-5 sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0"
-              >
+              <Reveal key={service.title} delay={index * 0.1}>
+              <div className="border-t border-white/15 py-5 sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0">
                 <p className="text-xs tracking-[0.16em] text-indigo-600">
                   0{index + 1}
                 </p>
@@ -219,9 +226,10 @@ export default function Home() {
                   {service.description}
                 </p>
               </div>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
@@ -237,13 +245,14 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-wrap content-start gap-2.5">
-            {skills.map((skill) => (
+            {skills.map((skill, index) => (
+              <Reveal key={skill} delay={Math.min(index * 0.035, 0.4)}>
               <span
-                key={skill}
                 className="glass-chip rounded-full px-4 py-2.5 text-sm text-stone-300 transition hover:border-indigo-200 hover:text-indigo-700"
               >
                 {skill}
               </span>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -258,10 +267,8 @@ export default function Home() {
         </div>
         <div className="divide-y divide-white/10 border-y border-white/10">
           {experience.slice(0, 3).map((item, index) => (
-            <div
-              key={item.role}
-              className="grid gap-3 py-6 sm:grid-cols-[140px_1fr] sm:gap-8 sm:py-8"
-            >
+            <Reveal key={item.role} delay={index * 0.1}>
+            <div className="grid gap-3 py-6 sm:grid-cols-[140px_1fr] sm:gap-8 sm:py-8">
               <p className="text-xs uppercase tracking-[0.16em] text-indigo-600">
                 0{index + 1} / {item.period}
               </p>
@@ -274,11 +281,13 @@ export default function Home() {
                 </p>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-5 pb-24 sm:px-8 lg:px-12 lg:pb-32">
+        <Reveal>
         <div className="editorial-card relative overflow-hidden rounded-[2rem] p-8 sm:p-12 lg:p-16">
           <div
             className="pointer-events-none absolute -right-10 -top-32 h-80 w-80 rounded-full border border-indigo-200/30"
@@ -314,6 +323,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </Reveal>
       </section>
     </main>
   );

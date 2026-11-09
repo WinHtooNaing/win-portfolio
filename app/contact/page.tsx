@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageHero } from "../components/page-hero";
 import { ButtonLink } from "../components/ui/button";
+import { Reveal } from "../components/motion/reveal";
 import { contactLinks, profile } from "../site-data";
 
 export default function ContactPage() {
@@ -13,7 +14,7 @@ export default function ContactPage() {
       />
 
       <section className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_0.85fr] lg:px-12">
-        <div className="editorial-card relative overflow-hidden rounded-[2rem] p-8 text-stone-100 sm:p-12">
+        <Reveal className="editorial-card relative overflow-hidden rounded-[2rem] p-8 text-stone-100 sm:p-12">
           <div
             className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border border-indigo-200/30"
             aria-hidden="true"
@@ -33,7 +34,7 @@ export default function ContactPage() {
               Share what you’re working on, the role you have in mind, or how
               you’d like to collaborate. Reach out by email and I’ll be in touch.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink
                 href={contactLinks[0].href}
                 size="lg"
@@ -41,14 +42,21 @@ export default function ContactPage() {
               >
                 Email me <span aria-hidden="true" className="ml-2">↗</span>
               </ButtonLink>
+              <a
+                href="/cv.pdf"
+                download="Win-Htoo-Naing-CV.pdf"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-stone-900/20 bg-white/60 px-6 text-sm font-semibold text-stone-900 transition hover:-translate-y-0.5 hover:border-stone-900 hover:bg-white"
+              >
+                Download CV <span aria-hidden="true">↓</span>
+              </a>
             </div>
             <p className="mt-8 break-all border-t border-white/10 pt-5 text-sm font-medium text-stone-300">
               {contactLinks[0].value}
             </p>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col justify-center">
+        <Reveal className="flex flex-col justify-center" delay={0.12}>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700">
             Elsewhere
           </p>
@@ -95,7 +103,7 @@ export default function ContactPage() {
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </main>
   );

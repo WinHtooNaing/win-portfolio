@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "../components/page-hero";
 import { Card } from "../components/ui/card";
+import { Reveal } from "../components/motion/reveal";
 import { projects } from "../site-data";
 
 export default function ProjectsPage() {
@@ -15,14 +16,18 @@ export default function ProjectsPage() {
 
       <section className="mx-auto grid w-full max-w-7xl gap-5 px-5 sm:px-8 md:grid-cols-2 lg:px-12">
         {projects.map((project, index) => (
-          <Card
+          <Reveal
             key={project.title}
-            className={
-              index === 0
-                ? "overflow-hidden md:col-span-2 md:grid md:grid-cols-[1.05fr_0.95fr]"
-                : "overflow-hidden"
-            }
+            className={index === 0 ? "md:col-span-2" : undefined}
+            delay={Math.min(index * 0.08, 0.32)}
           >
+            <Card
+              className={
+                index === 0
+                  ? "overflow-hidden md:grid md:grid-cols-[1.05fr_0.95fr]"
+                  : "overflow-hidden"
+              }
+            >
             <Link
               href={project.liveUrl}
               target="_blank"
@@ -100,7 +105,8 @@ export default function ProjectsPage() {
                 </Link>
               </div>
             </div>
-          </Card>
+            </Card>
+          </Reveal>
         ))}
       </section>
     </main>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { profile } from "../site-data";
-import { Button, ButtonLink } from "./ui/button";
+import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -45,6 +45,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "rounded-full px-4 py-2.5 text-[13px] font-medium transition-all duration-300",
                     isActive
@@ -94,9 +95,13 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             </Button>
           </div>
           <div className="hidden md:flex">
-            <ButtonLink href="/contact" size="lg">
-              Let’s connect <span aria-hidden="true" className="ml-2">↗</span>
-            </ButtonLink>
+            <a
+              href="/cv.pdf"
+              download="Win-Htoo-Naing-CV.pdf"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-stone-900/20 bg-white/60 px-4 text-sm font-semibold text-stone-900 transition hover:-translate-y-0.5 hover:border-stone-900 hover:bg-white"
+            >
+              Download CV <span aria-hidden="true">↓</span>
+            </a>
           </div>
         </div>
 
@@ -115,6 +120,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  aria-current={isActive ? "page" : undefined}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
                     "block rounded-xl px-4 py-3 text-sm font-medium transition-colors",

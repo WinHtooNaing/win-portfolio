@@ -2,7 +2,7 @@ export const profile = {
   name: "Win Htoo Naing",
   shortName: "WHN",
   title: "Full-Stack Developer · Frontend Focus",
-  location: "Taungoo, Myanmar",
+  location: "Yangon, Myanmar",
   availability: "Frontend team · Origin Business Solutions",
   intro:
     "I’m a full-stack developer with a strong focus on frontend engineering. I build responsive, accessible interfaces and bring the backend experience to connect them to reliable application logic and data.",

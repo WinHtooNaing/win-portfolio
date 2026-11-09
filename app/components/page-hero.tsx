@@ -1,4 +1,5 @@
 import { Badge } from "./ui/badge";
+import { Reveal } from "./motion/reveal";
 
 export function PageHero({
   eyebrow,
@@ -10,7 +11,10 @@ export function PageHero({
   description: string;
 }) {
   return (
-    <section className="motion-enter mx-auto w-full max-w-7xl px-5 pb-10 pt-20 sm:px-8 lg:px-12 lg:pt-28">
+    <Reveal
+      className="mx-auto w-full max-w-7xl px-5 pb-10 pt-20 sm:px-8 lg:px-12 lg:pt-28"
+      animateOnLoad
+    >
       <Badge>
         <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
         {eyebrow}
@@ -21,6 +25,6 @@ export function PageHero({
       <p className="mt-6 max-w-2xl text-base leading-8 text-stone-400 sm:text-lg">
         {description}
       </p>
-    </section>
+    </Reveal>
   );
 }

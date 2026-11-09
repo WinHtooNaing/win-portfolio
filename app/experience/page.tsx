@@ -1,5 +1,6 @@
 import { PageHero } from "../components/page-hero";
 import { SkillShowcase } from "../components/skill-showcase";
+import { Reveal } from "../components/motion/reveal";
 import { experience } from "../site-data";
 
 export default function ExperiencePage() {
@@ -35,8 +36,8 @@ export default function ExperiencePage() {
 
         <div className="divide-y divide-white/10 border-y border-white/10">
           {experience.map((item, index) => (
+            <Reveal key={item.role} delay={index * 0.1}>
             <article
-              key={item.role}
               className="grid gap-3 py-7 sm:grid-cols-[180px_1fr] sm:gap-10 sm:py-9"
             >
               <p className="text-xs font-medium uppercase tracking-[0.16em] text-indigo-700">
@@ -52,6 +53,7 @@ export default function ExperiencePage() {
                 </p>
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
       </section>

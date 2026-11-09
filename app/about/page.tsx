@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PageHero } from "../components/page-hero";
 import { ButtonLink } from "../components/ui/button";
 import { Card } from "../components/ui/card";
+import { Reveal } from "../components/motion/reveal";
 import { highlights, profile, services } from "../site-data";
 
 export default function AboutPage() {
@@ -14,7 +15,7 @@ export default function AboutPage() {
       />
 
       <section className="mx-auto grid w-full max-w-7xl gap-6 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-12">
-        <div className="hero-art about-art">
+        <Reveal className="hero-art about-art">
           <div className="hero-art__grid" aria-hidden="true" />
           <div className="hero-art__glow" aria-hidden="true" />
           <div className="hero-art__orbit hero-art__orbit--outer" aria-hidden="true" />
@@ -29,9 +30,10 @@ export default function AboutPage() {
               <span>Product-minded</span>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <Card className="flex flex-col justify-center p-7 sm:p-10">
+        <Reveal delay={0.12}>
+        <Card className="flex h-full flex-col justify-center p-7 sm:p-10">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700">
             How I work
           </p>
@@ -49,6 +51,7 @@ export default function AboutPage() {
             </ButtonLink>
           </div>
         </Card>
+        </Reveal>
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
@@ -62,17 +65,19 @@ export default function AboutPage() {
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {services.map((service, index) => (
-            <Card key={service.title} className="p-6 sm:p-8">
-              <span className="text-xs uppercase tracking-[0.18em] text-indigo-700">
-                0{index + 1}
-              </span>
-              <h3 className="mt-8 text-xl font-semibold text-stone-100">
-                {service.title}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-stone-400">
-                {service.description}
-              </p>
-            </Card>
+            <Reveal key={service.title} delay={index * 0.1}>
+              <Card className="h-full p-6 sm:p-8">
+                <span className="text-xs uppercase tracking-[0.18em] text-indigo-700">
+                  0{index + 1}
+                </span>
+                <h3 className="mt-8 text-xl font-semibold text-stone-100">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-stone-400">
+                  {service.description}
+                </p>
+              </Card>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -81,8 +86,8 @@ export default function AboutPage() {
         <div className="editorial-card overflow-hidden rounded-[2rem]">
           <div className="grid md:grid-cols-3">
             {highlights.map((item, index) => (
+              <Reveal key={item.label} delay={index * 0.1}>
               <div
-                key={item.label}
                 className="border-b border-white/10 p-6 last:border-b-0 md:border-b-0 md:border-r md:p-8 md:last:border-r-0"
               >
                 <p className="text-xs uppercase tracking-[0.18em] text-stone-500">
@@ -93,6 +98,7 @@ export default function AboutPage() {
                   {item.value}
                 </p>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MotionProvider } from "./components/motion/reveal";
 import { SiteShell } from "./components/site-shell";
 import { profile } from "./site-data";
 import "./globals.css";
@@ -17,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full scroll-smooth antialiased">
       <body className="min-h-full flex flex-col">
-        <SiteShell>{children}</SiteShell>
+        <MotionProvider>
+          <SiteShell>{children}</SiteShell>
+        </MotionProvider>
       </body>
     </html>
   );

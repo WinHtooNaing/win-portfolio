@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   skillCategories,
   skillItems,
@@ -45,21 +46,32 @@ export function SkillShowcase() {
         })}
       </div>
 
-      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredSkills.map((skill) => (
-          <Card key={skill.name} className="p-5">
-            <div className="flex items-start justify-between gap-4">
-              <h3 className="font-semibold text-stone-100">{skill.name}</h3>
-              <span className="rounded-full border border-white/10 px-2 py-1 text-[9px] uppercase tracking-[0.12em] text-stone-500">
-                {skill.category}
-              </span>
-            </div>
-            <p className="mt-2 text-sm leading-6 text-stone-400">
-              {skill.description}
-            </p>
-          </Card>
-        ))}
-      </div>
+      <motion.div layout className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <AnimatePresence mode="popLayout">
+          {filteredSkills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              layout
+              initial={{ opacity: 0, y: 14, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.97 }}
+              transition={{ duration: 0.24, delay: index * 0.025 }}
+            >
+              <Card className="h-full p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="font-semibold text-stone-100">{skill.name}</h3>
+                  <span className="rounded-full border border-white/10 px-2 py-1 text-[9px] uppercase tracking-[0.12em] text-stone-500">
+                    {skill.category}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm leading-6 text-stone-400">
+                  {skill.description}
+                </p>
+              </Card>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }
