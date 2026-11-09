@@ -4,9 +4,9 @@ import { profile } from "./site-data";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: `${profile.name} | ${profile.title}`,
+  title: `${profile.name} — Full-Stack Developer, Frontend Focus`,
   description:
-    "Portfolio for Win Htoo Naing featuring full-stack projects, frontend work, and practical experience with Next.js, React, Node.js, and React Native.",
+    "Win Htoo Naing is a full-stack developer focused on frontend engineering, building responsive web experiences with React and Next.js and working across the stack.",
 };
 
 export default function RootLayout({

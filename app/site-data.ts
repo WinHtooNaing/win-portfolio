@@ -1,37 +1,40 @@
 export const profile = {
   name: "Win Htoo Naing",
   shortName: "WHN",
-  title: "Portfolio Website",
+  title: "Full-Stack Developer · Frontend Focus",
   location: "Taungoo, Myanmar",
-  availability: "Open to internships and junior roles",
+  availability: "Frontend team · Origin Business Solutions",
   intro:
-    "I build modern web and mobile experiences with a strong focus on clean UI, practical backend logic, and product-minded execution.",
-  heroDescription: "Full-Stack Developer | MERN Stack , Next.js and Laravel.",
+    "I’m a full-stack developer with a strong focus on frontend engineering. I build responsive, accessible interfaces and bring the backend experience to connect them to reliable application logic and data.",
+  heroDescription:
+    "I build across the stack, with a particular interest in the frontend: turning product ideas into clear, responsive interfaces, then connecting them to the systems behind them.",
   about: [
-    "Hello, I’m Win Htoo Naing, a final-year Computer Technology (CT) student and passionate full-stack developer. I specialize in MERN Stack, Next.js, Laravel, and React Native development. I enjoy building modern web and mobile applications and continuously learning new technologies to improve my skills and create impactful digital solutions.",
+    "I’m Win Htoo Naing, a full-stack developer and Computer Technology graduate from the University of Computer Studies, Taungoo. I’m most at home building frontend experiences—shaping interfaces that feel clear, responsive, and considered on every screen.",
+    "I work with the frontend team at Origin Business Solutions. My projects also take me across the stack, using technologies such as React, Next.js, Node.js, Laravel, and React Native to build complete web and mobile applications.",
   ],
 };
 
 export const highlights = [
-  { value: "3+", label: "Production-style projects" },
-  { value: "10+", label: "Core tools in daily workflow" },
-  { value: "99%", label: "Focus on responsive UI" },
+  { value: "Frontend first", label: "My development focus" },
+  { value: "Full-stack", label: "How I build products" },
+  { value: "Origin Business Solutions", label: "Current team" },
 ];
 
 export const services = [
   {
-    title: "Frontend Development",
+    title: "Frontend engineering",
     description:
-      "Modern and responsive interfaces built with React and Next.js.",
+      "I build responsive interfaces with React and Next.js, focusing on clear structure, reusable components, accessibility, and the details that make products easy to use.",
   },
   {
-    title: "Full-Stack Development",
-    description: "Complete web applications from database to deployment.",
+    title: "UI implementation",
+    description:
+      "I translate product requirements and visual designs into consistent interfaces, thoughtful interactions, and reusable UI patterns.",
   },
   {
-    title: "API Development",
+    title: "Full-stack development",
     description:
-      "RESTful APIs with Laravel and Node.js for scalable applications.",
+      "I connect frontend experiences to APIs, application logic, and databases to help deliver complete, maintainable products.",
   },
 ];
 
@@ -78,7 +81,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "React",
     category: "Frontend",
-    description: "Component-based UI library",
+    description: "Building reusable, interactive interfaces with components and state",
     level: "Expert",
     levelTone: "expert",
     proficiency: 90,
@@ -89,7 +92,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Next.js",
     category: "Frontend",
-    description: "App Router and modern React web apps",
+    description: "Building full-stack web applications with React and the App Router",
     level: "Expert",
     levelTone: "expert",
     proficiency: 90,
@@ -100,7 +103,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Vue.js",
     category: "Frontend",
-    description: "Progressive JavaScript framework",
+    description: "Exploring a progressive framework for building web interfaces",
     level: "Strong",
     levelTone: "strong",
     proficiency: 70,
@@ -111,7 +114,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "React Native",
     category: "Frontend",
-    description: "Cross-platform mobile apps with React",
+    description: "Creating cross-platform mobile experiences with React",
     level: "Strong",
     levelTone: "strong",
     proficiency: 70,
@@ -122,7 +125,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Node.js",
     category: "Backend",
-    description: "Backend logic, APIs, and server-side features",
+    description: "Building server-side application logic and APIs",
     level: "Advanced",
     levelTone: "advanced",
     proficiency: 85,
@@ -133,7 +136,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Express.js",
     category: "Backend",
-    description: "Web framework for Node.js applications",
+    description: "Creating API routes and web applications with Node.js",
     level: "Advanced",
     levelTone: "advanced",
     proficiency: 85,
@@ -144,7 +147,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Laravel",
     category: "Backend",
-    description: "Structured PHP backend development",
+    description: "Building server-rendered applications and APIs with PHP",
     level: "Advanced",
     levelTone: "advanced",
     proficiency: 80,
@@ -155,7 +158,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "TypeScript",
     category: "Tools",
-    description: "Typed JavaScript for scalable applications",
+    description: "Writing typed JavaScript across frontend and backend projects",
     level: "Advanced",
     levelTone: "advanced",
     proficiency: 80,
@@ -166,7 +169,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "MongoDB",
     category: "Database",
-    description: "Document database for MERN applications",
+    description: "Modeling and querying application data in document databases",
     level: "Advanced",
     levelTone: "advanced",
     proficiency: 80,
@@ -177,7 +180,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "PostgreSQL",
     category: "Database",
-    description: "Relational data modeling and querying",
+    description: "Working with relational data and SQL-backed applications",
     level: "Strong",
     levelTone: "strong",
     proficiency: 70,
@@ -188,7 +191,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Supabase",
     category: "Database",
-    description: "Realtime backend and database workflows",
+    description: "Using hosted databases and backend services in applications",
     level: "Strong",
     levelTone: "strong",
     proficiency: 70,
@@ -199,18 +202,18 @@ export const skillItems: SkillItem[] = [
   {
     name: "Prisma",
     category: "Database",
-    description: "Modern TypeScript ORM for scalable applications",
+    description: "Working with type-safe database access in TypeScript",
     level: "Strong",
     levelTone: "strong",
     proficiency: 75,
     years: "1+ years",
-    projects: "+ projects",
+    projects: "Personal projects",
     icon: "database",
   },
   {
     name: "Drizzle ORM",
     category: "Database",
-    description: "Lightweight and type-safe SQL ORM for TypeScript",
+    description: "Querying SQL databases from TypeScript applications",
     level: "Advanced",
     levelTone: "advanced",
     proficiency: 80,
@@ -221,7 +224,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Deployment",
     category: "DevOps",
-    description: "Vercel, hosting, and project shipping workflow",
+    description: "Deploying and maintaining web projects with Vercel",
     level: "Strong",
     levelTone: "strong",
     proficiency: 75,
@@ -232,7 +235,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Git & GitHub",
     category: "Tools",
-    description: "Version control and collaboration workflow",
+    description: "Managing code and collaborating with Git and GitHub",
     level: "Advanced",
     levelTone: "advanced",
     proficiency: 86,
@@ -243,7 +246,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Tailwind CSS",
     category: "Tools",
-    description: "Utility-first styling for polished interfaces",
+    description: "Building responsive interfaces with utility-first CSS",
     level: "Advanced",
     levelTone: "advanced",
     proficiency: 90,
@@ -254,7 +257,7 @@ export const skillItems: SkillItem[] = [
   {
     name: "Communication",
     category: "Soft Skills",
-    description: "Team communication and clear project updates",
+    description: "Communicating clearly and collaborating with a team",
     level: "Strong",
     levelTone: "strong",
     proficiency: 75,
@@ -268,28 +271,22 @@ export const skills = skillItems.map((skill) => skill.name);
 
 export const experience = [
   {
-    period: "Final Year",
-    role: "Computer Technology Student",
+    period: "Current",
+    role: "Frontend Developer · Origin Business Solutions",
     details:
-      "Final-year Computer Technology (CT) student at University of Computer Studies (Taungoo), passionate about modern web and mobile development.",
+      "Part of the frontend team, contributing to web interface development and collaborating on product work.",
   },
   {
-    period: "Development Skills",
-    role: "MERN Stack & Next.js Developer",
+    period: "Education",
+    role: "Computer Technology · University of Computer Studies, Taungoo",
     details:
-      "Building full-stack web applications using MongoDB, Express.js, React, Node.js, and Next.js with focus on scalable architecture and clean UI implementation.",
+      "Graduated in Computer Technology, developing a foundation in software development and technical problem solving.",
   },
   {
-    period: "Backend & API Development",
-    role: "Laravel Developer",
+    period: "Independent work",
+    role: "Web & mobile development",
     details:
-      "Developing RESTful APIs, authentication systems, and backend services using Laravel for modern web and mobile applications.",
-  },
-  {
-    period: "Currently Learning",
-    role: "React Native & Vue Developer",
-    details:
-      "Currently learning React Native and Vue.js to expand skills in cross-platform mobile development and modern frontend ecosystems.",
+      "Built web and mobile projects with React, Next.js, Node.js, Laravel, and React Native, taking ideas from interface through backend implementation.",
   },
 ];
 
@@ -297,7 +294,7 @@ export const projects = [
   {
     title: "Supermarket POS System",
     description:
-      "A modern supermarket POS and inventory management system with product tracking, category management, cashier workflows, sales monitoring, and responsive dashboards for daily retail operations. Demo Login → Email: winhtoonaing | Password: winhtoonaing",
+      "A point-of-sale and retail management app for handling products, inventory, cashier workflows, and sales in one dashboard.",
     stack: ["Next.js", "Tailwind CSS", "Shadcn UI", "Drizzle ORM", "NeonDB"],
     image: "/projects/supermarket.png",
     imageAlt: "Preview card for Supermarket POS System",
@@ -307,7 +304,7 @@ export const projects = [
   {
     title: "Market.io",
     description:
-      "A MERN business platform with authentication, analytics, role-aware dashboards, and practical operations workflows.",
+      "A MERN-stack business platform that brings authentication, analytics, and day-to-day workflows into a single dashboard.",
     stack: ["MongoDB", "Express", "React", "Node.js", "Cloudinary"],
     image: "/projects/mern.png",
     imageAlt: "Preview card for Market.io business platform",
@@ -317,7 +314,7 @@ export const projects = [
   {
     title: "FotMob Blog",
     description:
-      "A modern Next.js blog platform with authentication, uploads, and a polished publishing-oriented UI.",
+      "A blog platform with authentication and image uploads, designed for a responsive writing and reading experience.",
     stack: [
       "Next.js",
       "Tailwind",
@@ -334,7 +331,7 @@ export const projects = [
   {
     title: "UCSTGO Voting App",
     description:
-      "A secure voting experience with authentication, role-based access, and real-time result visibility for campus use.",
+      "A campus voting app built with React Native and Supabase, with sign-in and voting results.",
     stack: ["React Native", "Supabase"],
     image: "/projects/react-native.png",
     imageAlt: "Preview card for UCSTGO voting application",
@@ -344,7 +341,7 @@ export const projects = [
   {
     title: "Restaurant Management System",
     description:
-      "A restaurant management system with admin, chef, and waiter roles for handling orders, menu management, and daily restaurant operations efficiently.",
+      "A restaurant management app with admin, chef, and waiter workflows for managing menus and handling orders.",
     stack: ["Laravel", "Tailwind CSS", "MySQL", "Laravel Breeze"],
     image: "/projects/resturant.png",
     imageAlt: "Preview card for Restaurant Management System",
@@ -358,18 +355,18 @@ export const contactLinks = [
     label: "Email",
     value: "winhtoonaing2003@gmail.com",
     href: "mailto:winhtoonaing2003@gmail.com",
-    note: "Best for project inquiries, internships, and direct collaboration.",
+    note: "For professional opportunities, project inquiries, and collaboration.",
   },
   {
     label: "GitHub",
     value: "github.com/winhtoonaing",
     href: "https://github.com/winhtoonaing",
-    note: "Code samples, project history, and hands-on experiments.",
+    note: "Browse my code, projects, and experiments.",
   },
   {
     label: "LinkedIn",
     value: "win-htoo-naing",
     href: "https://www.linkedin.com/in/win-htoo-naing-51bb79275/",
-    note: "Professional profile and networking updates.",
+    note: "Connect with me and view my professional background.",
   },
 ];

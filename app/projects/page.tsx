@@ -1,132 +1,105 @@
 import Image from "next/image";
+import Link from "next/link";
 import { PageHero } from "../components/page-hero";
-import { ButtonLink } from "../components/ui/button";
-import { Card, CardContent } from "../components/ui/card";
+import { Card } from "../components/ui/card";
 import { projects } from "../site-data";
 
 export default function ProjectsPage() {
   return (
-    <main className="pb-14">
+    <main className="pb-20">
       <PageHero
-        eyebrow="Projects"
-        title=""
-        description="A few projects that show how I approach user interface, data flow, and practical product delivery."
+        eyebrow="Selected work"
+        title="Web and mobile projects, built end to end."
+        description="A selection of projects across frontend, backend, and mobile development. I focus on the user experience while building the supporting features that make each product work."
       />
 
-      {/* <section className="mx-auto grid w-full max-w-7xl gap-6 px-4 py-6 sm:px-8 lg:grid-cols-3 lg:px-10">
-        {projects.map((project, index) => (
-          <Card key={project.title} className="overflow-hidden">
-            <div className="relative aspect-[4/3] bg-blue-500/10">
-              <Image
-                src={project.image}
-                alt={project.imageAlt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 33vw"
-              />
-            </div>
-            <CardContent className="flex h-full flex-col">
-              <p className="text-xs uppercase tracking-[0.24em] text-blue-500">
-                0{index + 1}
-              </p>
-              <h2 className="mt-3 text-2xl font-semibold text-black">
-                {project.title}
-              </h2>
-              <p className="mt-4 flex-1 text-base leading-8 text-black/65">
-                {project.description}
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {project.stack.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-black/10 bg-blue-500/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-blue-500"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-6 flex gap-3">
-                <ButtonLink
-                  href={project.githubUrl}
-                  variant="outline"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </ButtonLink>
-                <ButtonLink
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Live Demo
-                </ButtonLink>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </section> */}
-      <section className="mx-auto grid w-full max-w-7xl gap-6 px-4 py-6 sm:px-8 lg:grid-cols-3 lg:px-10">
+      <section className="mx-auto grid w-full max-w-7xl gap-5 px-5 sm:px-8 md:grid-cols-2 lg:px-12">
         {projects.map((project, index) => (
           <Card
             key={project.title}
-            className="flex h-full flex-col overflow-hidden border border-black/10"
+            className={
+              index === 0
+                ? "overflow-hidden md:col-span-2 md:grid md:grid-cols-[1.05fr_0.95fr]"
+                : "overflow-hidden"
+            }
           >
-            <div className="relative aspect-[4/3] bg-blue-500/10">
+            <Link
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={`image-zoom relative block overflow-hidden bg-slate-100 ${
+                index === 0
+                  ? "aspect-[1.5] md:aspect-auto md:min-h-[27rem]"
+                  : "aspect-[1.55]"
+              }`}
+              aria-label={`View ${project.title}`}
+            >
               <Image
                 src={project.image}
                 alt={project.imageAlt}
                 fill
+                priority={index === 0}
                 className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
-            </div>
+              <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/55 px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-white backdrop-blur">
+                0{index + 1} <span className="mx-1.5 text-indigo-600">/</span>{" "}
+                Selected project
+              </span>
+            </Link>
 
-            <CardContent className="flex flex-1 flex-col p-6">
-              <p className="text-xs uppercase tracking-[0.24em] text-blue-500">
-                0{index + 1}
-              </p>
-
-              <h2 className="mt-3 text-2xl font-semibold text-black">
-                {project.title}
-              </h2>
-
-              <p className="mt-4 text-base leading-8 text-black/65">
+            <div
+              className={`p-6 sm:p-8 ${
+                index === 0
+                  ? "flex flex-col justify-center sm:p-10 lg:p-12"
+                  : ""
+              }`}
+            >
+              {index === 0 && (
+                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-700">
+                  Featured work <span className="ml-1">✳</span>
+                </p>
+              )}
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h2 className="text-2xl font-semibold tracking-tight text-stone-100 sm:text-3xl">
+                  {project.title}
+                </h2>
+                <span className="text-xs text-stone-500">
+                  {project.stack[0]}
+                </span>
+              </div>
+              <p className="mt-4 text-sm leading-7 text-stone-400">
                 {project.description}
               </p>
-
-              {/* Stack */}
               <div className="mt-5 flex flex-wrap gap-2">
-                {project.stack.map((item) => (
+                {project.stack.map((technology) => (
                   <span
-                    key={item}
-                    className="rounded-full border border-black/10 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600"
+                    key={technology}
+                    className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.12em] text-stone-400"
                   >
-                    {item}
+                    {technology}
                   </span>
                 ))}
               </div>
-
-              {/* Buttons */}
-              <div className="mt-6 flex gap-3">
-                <ButtonLink
+              <div className="mt-7 flex flex-wrap gap-5 border-t border-white/10 pt-5 text-sm font-medium">
+                <Link
                   href={project.githubUrl}
-                  variant="outline"
                   target="_blank"
                   rel="noreferrer"
+                  className="text-stone-300 transition hover:text-indigo-700"
                 >
-                  GitHub
-                </ButtonLink>
-
-                <ButtonLink
+                  Source code <span aria-hidden="true">↗</span>
+                </Link>
+                <Link
                   href={project.liveUrl}
                   target="_blank"
                   rel="noreferrer"
+                  className="text-stone-300 transition hover:text-indigo-700"
                 >
-                  Live Demo
-                </ButtonLink>
+                  View project <span aria-hidden="true">↗</span>
+                </Link>
               </div>
-            </CardContent>
+            </div>
           </Card>
         ))}
       </section>

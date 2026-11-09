@@ -1,99 +1,101 @@
+import Link from "next/link";
 import { PageHero } from "../components/page-hero";
-import { Badge } from "../components/ui/badge";
-import { Card, CardContent } from "../components/ui/card";
+import { ButtonLink } from "../components/ui/button";
 import { contactLinks, profile } from "../site-data";
 
 export default function ContactPage() {
   return (
-    <main className="pb-14">
+    <main className="pb-20">
       <PageHero
         eyebrow="Contact"
-        title="Let's talk about internships or junior roles."
-        description="If you have an opportunity or an idea that needs a developer who enjoys building practical products, feel free to reach out."
+        title="Let’s talk about what you’re building."
+        description="Have a role, project, or collaboration in mind? I’m a full-stack developer focused on frontend engineering and would be glad to hear from you."
       />
 
-      <section className="mx-auto w-full max-w-7xl px-4 py-10 pb-16 sm:px-8 lg:px-10">
-        <Card className="overflow-hidden border border-neutral-200 bg-white shadow-xl">
-          <CardContent className="grid gap-10 p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:p-12">
-            {/* Left Content */}
-            <div>
-              <Badge className="border border-blue-200 bg-blue-50 px-4 py-1 text-blue-600">
-                Contact Me
-              </Badge>
-
-              <h2 className="mt-6 text-4xl font-bold leading-tight text-neutral-900 sm:text-5xl">
-                Let’s Build Something Amazing Together
-              </h2>
-
-              <p className="mt-5 max-w-xl text-base leading-8 text-neutral-600">
-                I’m currently open to internships, freelance projects, and
-                junior web developer opportunities. Feel free to reach out if
-                you’d like to collaborate or discuss a project.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="mailto:winhtoonaing2003@gmail.com"
-                  className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:scale-105 hover:bg-blue-700"
-                >
-                  Send Email
-                </a>
-
-                <a
-                  href="https://github.com/winhtoonaing"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-xl border border-neutral-200 bg-neutral-50 px-6 py-3 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-100"
-                >
-                  View GitHub
-                </a>
-              </div>
+      <section className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_0.85fr] lg:px-12">
+        <div className="editorial-card relative overflow-hidden rounded-[2rem] p-8 text-stone-100 sm:p-12">
+          <div
+            className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full border border-indigo-200/30"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full bg-indigo-400/10 blur-3xl"
+            aria-hidden="true"
+          />
+          <div className="relative">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700">
+              Say hello
+            </p>
+            <h2 className="mt-5 max-w-lg text-4xl font-semibold leading-tight tracking-[-0.06em] sm:text-5xl">
+              Tell me a little about your project.
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-7 text-stone-400">
+              Share what you’re working on, the role you have in mind, or how
+              you’d like to collaborate. Reach out by email and I’ll be in touch.
+            </p>
+            <div className="mt-8">
+              <ButtonLink
+                href={contactLinks[0].href}
+                size="lg"
+                className="bg-stone-900 text-white hover:bg-stone-800"
+              >
+                Email me <span aria-hidden="true" className="ml-2">↗</span>
+              </ButtonLink>
             </div>
+            <p className="mt-8 break-all border-t border-white/10 pt-5 text-sm font-medium text-stone-300">
+              {contactLinks[0].value}
+            </p>
+          </div>
+        </div>
 
-            {/* Right Content */}
-            <div className="grid gap-4">
-              {contactLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="group rounded-2xl border border-neutral-200 bg-neutral-50 p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <p className="text-xs uppercase tracking-[0.25em] text-neutral-500">
+        <div className="flex flex-col justify-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-700">
+            Elsewhere
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-stone-100">
+            Find me online.
+          </h2>
+          <div className="mt-7 divide-y divide-white/10 border-y border-white/10">
+            {contactLinks.slice(1).map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-between gap-4 py-5"
+              >
+                <div>
+                  <p className="text-xs uppercase tracking-[0.16em] text-stone-500">
                     {link.label}
                   </p>
-
-                  <p className="mt-2 text-lg font-semibold text-neutral-900 transition group-hover:translate-x-1">
+                  <p className="mt-2 text-base font-medium text-stone-200 transition group-hover:text-indigo-700">
                     {link.value}
                   </p>
-
-                  <p className="mt-2 text-sm leading-7 text-neutral-600">
+                  <p className="mt-1 text-sm leading-6 text-stone-500">
                     {link.note}
                   </p>
-                </a>
-              ))}
-
-              {/* Phone Number */}
-              <a
-                href="tel:+959759518791"
-                className="group rounded-2xl border border-neutral-200 bg-neutral-50 p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <p className="text-xs uppercase tracking-[0.25em] text-neutral-500">
-                  Phone Number
-                </p>
-
-                <p className="mt-2 text-lg font-semibold text-neutral-900 transition group-hover:translate-x-1">
-                  +959 759518791
-                </p>
-
-                <p className="mt-2 text-sm leading-7 text-neutral-600">
-                  Available for project discussions and opportunities.
-                </p>
-              </a>
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="text-lg text-stone-500 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-indigo-700"
+                >
+                  ↗
+                </span>
+              </Link>
+            ))}
+            <div className="py-5">
+              <p className="text-xs uppercase tracking-[0.16em] text-stone-500">
+                Location
+              </p>
+              <p className="mt-2 text-base font-medium text-stone-200">
+                {profile.location}
+              </p>
+              <p className="mt-1 text-sm text-stone-500">
+                {profile.availability}
+              </p>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </section>
     </main>
   );

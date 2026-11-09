@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   contactLinks,
   experience,
@@ -6,174 +7,131 @@ import {
   profile,
   projects,
   services,
+  skills,
 } from "./site-data";
 import { Badge } from "./components/ui/badge";
 import { ButtonLink } from "./components/ui/button";
-import { Card, CardContent } from "./components/ui/card";
-import { SkillShowcase } from "./components/skill-showcase";
+import { Card } from "./components/ui/card";
+
+const featuredProjects = projects.slice(0, 3);
 
 export default function Home() {
   return (
     <main>
-      <section className="mx-auto grid min-h-[calc(100vh-4.5rem)] w-full max-w-7xl gap-10 px-4 py-12 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10 lg:py-16">
-        <div>
-          <Badge>{profile.title}</Badge>
-          <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-tight text-black sm:text-5xl lg:text-6xl">
-            {profile.name}
-          </h1>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-black/65 sm:text-lg">
-            {profile.heroDescription}
-          </p>
-          <p className="mt-3 text-sm uppercase tracking-[0.24em] text-blue-500">
-            {profile.location} | {profile.availability}
-          </p>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/cv.pdf" size="lg" target="_blank">
-              View CV
-            </ButtonLink>
-            <ButtonLink href="/contact" variant="outline" size="lg">
-              Hire Me
-            </ButtonLink>
+      <section className="relative isolate overflow-hidden">
+        <div className="site-grid absolute inset-0 -z-10" aria-hidden="true" />
+        <div className="mx-auto grid min-h-[min(740px,calc(100svh-5rem))] w-full max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-20">
+          <div className="motion-enter">
+            <Badge>
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-indigo-500" />
+              {profile.availability}
+            </Badge>
+            <p className="mt-8 text-sm font-medium uppercase tracking-[0.2em] text-stone-500">
+              Full-stack developer <span className="mx-1 text-indigo-500">/</span>
+              frontend focus
+            </p>
+            <h1 className="mt-5 max-w-4xl text-[clamp(3.4rem,7.4vw,6.8rem)] font-semibold leading-[0.94] tracking-[-0.075em] text-stone-100">
+              Full-stack
+              <br />
+              developer,
+              <br />
+              <span className="accent-text">frontend focused.</span>
+            </h1>
+            <p className="mt-7 max-w-xl text-base leading-8 text-stone-400 sm:text-lg">
+              {profile.heroDescription}
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <ButtonLink href="/projects" size="lg">
+                View selected work <span aria-hidden="true" className="ml-2">↗</span>
+              </ButtonLink>
+              <ButtonLink href="/contact" size="lg" variant="outline">
+                Contact me
+              </ButtonLink>
+            </div>
+            <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/10 pt-5 text-xs uppercase tracking-[0.16em] text-stone-500">
+              <span>{profile.location}</span>
+              <span className="h-1 w-1 rounded-full bg-indigo-500" />
+              <span>Frontend focus · Full-stack capability</span>
+            </div>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {highlights.map((item) => (
-              <Card key={item.label}>
-                <CardContent className="space-y-2">
-                  <p className="text-3xl font-semibold text-black">
-                    {item.value}
-                  </p>
-                  <p className="text-sm leading-6 text-black/60">
-                    {item.label}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex justify-center lg:justify-end">
-          <div className="relative w-full max-w-md">
-            <div className="absolute inset-0 rounded-[2rem] bg-blue-500/15 blur-3xl" />
-            <Card className="relative overflow-hidden rounded-[2rem] border-blue-500/20">
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src="/portfolio.jpg"
-                  alt={`${profile.name} portrait`}
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 420px"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/70 to-transparent p-6 text-white">
-                  <p className="text-xs uppercase tracking-[0.28em] text-blue-300">
-                    Portfolio
-                  </p>
-                  <p className="mt-3 text-2xl font-semibold">{profile.name}</p>
-                </div>
+          <div className="motion-enter motion-delay-2 relative mx-auto w-full max-w-[500px] lg:ml-auto">
+            <div className="hero-art" aria-hidden="true">
+              <div className="hero-art__grid" aria-hidden="true" />
+              <div className="hero-art__glow" aria-hidden="true" />
+              <div className="hero-art__orbit hero-art__orbit--outer" aria-hidden="true" />
+              <div className="hero-art__orbit hero-art__orbit--inner" aria-hidden="true" />
+              <div className="hero-art__monogram" aria-hidden="true">
+                WHN<span>.</span>
               </div>
-            </Card>
+              <div className="hero-art__code" aria-hidden="true">
+                <span className="hero-art__code-label">How I approach a product</span>
+                <span><i>const</i> focus = [</span>
+                <span className="hero-art__code-indent">user interface,</span>
+                <span className="hero-art__code-indent">product experience,</span>
+                <span className="hero-art__code-indent">the full stack</span>
+                <span>];</span>
+              </div>
+              <div className="hero-art__tag hero-art__tag--top">
+                <span className="hero-art__tag-dot" />
+                Frontend craft
+              </div>
+              <div className="hero-art__tag hero-art__tag--bottom">
+                Full-stack developer <span aria-hidden="true">↗</span>
+              </div>
+            </div>
+            <div className="mt-5 flex items-center justify-between gap-4 px-1 text-xs text-stone-500">
+              <span>{profile.name} <span className="mx-1.5 text-indigo-500">/</span> {profile.location}</span>
+              <span className="flex shrink-0 items-center gap-2">
+                <span className="hero-art__status-dot" />
+                Frontend focused
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-8 lg:px-10">
-        <div className="grid gap-6">
-          <Card>
-            <CardContent className="p-8">
-              <Badge>About</Badge>
-              <h2 className="mt-5 text-3xl font-semibold text-black">
-                About Me
-              </h2>
-              <div className="mt-5 space-y-4 text-base leading-8 text-black/65">
-                {profile.about.map((item) => (
-                  <p key={item}>{item}</p>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-8 lg:px-10">
-        <div className="mb-6 flex items-end justify-between">
-          <div>
-            <Badge>Services</Badge>
-            <h2 className="mt-5 text-3xl font-semibold text-black">
-              What I can help build.
-            </h2>
-          </div>
-        </div>
-        <div className="grid gap-6 lg:grid-cols-3">
-          {services.map((service) => (
-            <Card key={service.title}>
-              <CardContent className="p-8">
-                <p className="text-sm uppercase tracking-[0.22em] text-blue-500">
-                  Service
-                </p>
-                <h3 className="mt-4 text-2xl font-semibold text-black">
-                  {service.title}
-                </h3>
-                <p className="mt-4 text-base leading-8 text-black/65">
-                  {service.description}
-                </p>
-              </CardContent>
-            </Card>
+      <section className="mx-auto w-full max-w-7xl px-5 py-8 sm:px-8 lg:px-12">
+        <div className="editorial-card grid gap-px overflow-hidden rounded-3xl sm:grid-cols-3">
+          {highlights.map((item, index) => (
+            <div key={item.label} className="bg-white/[0.015] p-6 sm:p-8">
+              <p className="text-xs uppercase tracking-[0.2em] text-stone-500">
+                0{index + 1} <span className="mx-1.5 text-indigo-500">/</span>{" "}
+                {item.label}
+              </p>
+              <p className="mt-4 text-2xl font-semibold tracking-tight text-stone-100 sm:text-3xl">
+                {item.value}
+              </p>
+            </div>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-8 lg:px-10">
-        <div className="mb-6">
-          <Badge>Tech Stack</Badge>
-          <h2 className="mt-5 text-3xl font-semibold text-black">Skills</h2>
-        </div>
-        <SkillShowcase />
-      </section>
-
-      <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-8 lg:px-10">
-        <div className="mb-6">
-          <Badge>Experience</Badge>
-          <h2 className="mt-5 text-3xl font-semibold text-black">
-            Learning by building and shipping.
-          </h2>
-        </div>
-        <div className="space-y-4">
-          {experience.map((item) => (
-            <Card key={item.role}>
-              <CardContent>
-                <p className="text-xs uppercase tracking-[0.24em] text-blue-500">
-                  {item.period}
-                </p>
-                <h3 className="mt-3 text-xl font-semibold text-black">
-                  {item.role}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-black/65">
-                  {item.details}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-8 lg:px-10">
-        <div className="mb-6 flex items-end justify-between">
+      <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <Badge>Projects</Badge>
-            <h2 className="mt-5 text-3xl font-semibold text-black">
-              Selected work.
+            <Badge>Selected work</Badge>
+            <h2 className="mt-5 text-4xl font-semibold tracking-[-0.055em] text-stone-100 sm:text-5xl">
+              Selected projects
             </h2>
           </div>
-          <ButtonLink href="/projects" variant="outline">
-            All Projects
-          </ButtonLink>
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-stone-400 transition hover:text-indigo-700"
+          >
+            View all projects <span className="transition group-hover:translate-x-1">↗</span>
+          </Link>
         </div>
-        <div className="grid gap-6 lg:grid-cols-3">
-          {projects.map((project, index) => (
+        <div className="grid gap-5 lg:grid-cols-3">
+          {featuredProjects.map((project, index) => (
             <Card key={project.title} className="overflow-hidden">
-              <div className="relative aspect-[4/3] bg-blue-500/10">
+              <Link
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="image-zoom relative block aspect-[1.38] overflow-hidden bg-slate-100"
+                aria-label={`View ${project.title}`}
+              >
                 <Image
                   src={project.image}
                   alt={project.imageAlt}
@@ -181,137 +139,181 @@ export default function Home() {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 33vw"
                 />
-              </div>
-              <CardContent>
-                <p className="text-xs uppercase tracking-[0.24em] text-blue-500">
-                  0{index + 1}
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold text-black">
+                <span className="glass-chip absolute left-4 top-4 rounded-full px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-slate-700">
+                  Project 0{index + 1}
+                </span>
+              </Link>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold tracking-tight text-stone-100">
                   {project.title}
                 </h3>
-                <p className="mt-4 text-base leading-8 text-black/65">
+                <p className="mt-3 min-h-20 text-sm leading-7 text-stone-400">
                   {project.description}
                 </p>
-              </CardContent>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.stack.slice(0, 4).map((technology) => (
+                    <span
+                      key={technology}
+                      className="glass-chip rounded-full px-2.5 py-1 text-[10px] uppercase tracking-[0.12em] text-stone-400"
+                    >
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-6 flex gap-5 border-t border-white/10 pt-4 text-xs font-medium">
+                  <Link
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-stone-400 transition hover:text-indigo-700"
+                  >
+                    Source code ↗
+                  </Link>
+                  <Link
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-stone-400 transition hover:text-indigo-700"
+                  >
+                    Live project ↗
+                  </Link>
+                </div>
+              </div>
             </Card>
           ))}
         </div>
       </section>
 
-      {/* <section className="mx-auto w-full max-w-7xl px-4 py-8 pb-14 sm:px-8 lg:px-10">
-        <Card className="border-blue-500/20 bg-blue-500 ">
-          <CardContent className="grid gap-6 p-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-            <div>
-              <Badge className="border-white/20 bg-white/10 ">Contact</Badge>
-              <h2 className="mt-5 text-3xl font-semibold">
-                Ready to collaborate?
-              </h2>
-              <p className="mt-4 text-base leading-8 ">
-                Reach out for internships and Junior Web Developer.
+      <section className="border-y border-slate-200/80 bg-white/40 backdrop-blur-xl">
+        <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-12 lg:py-24">
+          <div>
+            <Badge>How I work</Badge>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.055em] text-stone-100 sm:text-5xl">
+              Strong interfaces, backed by full-stack thinking.
+            </h2>
+            <p className="mt-5 max-w-lg text-base leading-8 text-stone-400">
+              I focus on frontend development: shaping interfaces that are
+              clear, responsive, and easy to use. My full-stack experience helps
+              me connect the details on screen to the systems behind them.
+            </p>
+            <Link
+              href="/about"
+              className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+            >
+              More about my approach <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {services.map((service, index) => (
+              <div
+                key={service.title}
+                className="border-t border-white/15 py-5 sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0"
+              >
+                <p className="text-xs tracking-[0.16em] text-indigo-600">
+                  0{index + 1}
+                </p>
+                <h3 className="mt-7 text-lg font-semibold text-stone-100">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-stone-400">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
+          <div>
+            <Badge>Toolbox</Badge>
+            <h2 className="mt-5 text-4xl font-semibold tracking-[-0.055em] text-stone-100 sm:text-5xl">
+              Tools I build with.
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-stone-400">
+              Frontend is my focus; this toolkit lets me carry an idea through
+              the backend and into a complete product.
+            </p>
+          </div>
+          <div className="flex flex-wrap content-start gap-2.5">
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className="glass-chip rounded-full px-4 py-2.5 text-sm text-stone-300 transition hover:border-indigo-200 hover:text-indigo-700"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-7xl px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28">
+        <div className="mb-10">
+          <Badge>Experience</Badge>
+          <h2 className="mt-5 text-4xl font-semibold tracking-[-0.055em] text-stone-100 sm:text-5xl">
+            Experience across the stack.
+          </h2>
+        </div>
+        <div className="divide-y divide-white/10 border-y border-white/10">
+          {experience.slice(0, 3).map((item, index) => (
+            <div
+              key={item.role}
+              className="grid gap-3 py-6 sm:grid-cols-[140px_1fr] sm:gap-8 sm:py-8"
+            >
+              <p className="text-xs uppercase tracking-[0.16em] text-indigo-600">
+                0{index + 1} / {item.period}
               </p>
-            </div>
-            <div className="grid gap-4">
-              {contactLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="rounded-xl border border-white/20 bg-black/10 p-5 transition hover:bg-black/15"
-                >
-                  <p className="text-xs uppercase tracking-[0.22em] ">
-                    {link.label}
-                  </p>
-                  <p className="mt-2 text-lg font-semibold">{link.value}</p>
-                  <p className="mt-2 text-sm leading-7 ">{link.note}</p>
-                </a>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </section> */}
-      <section className="mx-auto w-full max-w-7xl px-4 py-10 pb-16 sm:px-8 lg:px-10">
-        <Card className="overflow-hidden border border-neutral-200 bg-white shadow-xl">
-          <CardContent className="grid gap-10 p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:p-12">
-            {/* Left Content */}
-            <div>
-              <Badge className="border border-blue-200 bg-blue-50 px-4 py-1 text-blue-600">
-                Contact Me
-              </Badge>
-
-              <h2 className="mt-6 text-4xl font-bold leading-tight text-neutral-900 sm:text-5xl">
-                Let’s Build Something Amazing Together
-              </h2>
-
-              <p className="mt-5 max-w-xl text-base leading-8 text-neutral-600">
-                I’m currently open to internships, freelance projects, and
-                junior web developer opportunities. Feel free to reach out if
-                you’d like to collaborate or discuss a project.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="mailto:winhtoonaing2003@gmail.com"
-                  className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:scale-105 hover:bg-blue-700"
-                >
-                  Send Email
-                </a>
-
-                <a
-                  href="https://github.com/winhtoonaing"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-xl border border-neutral-200 bg-neutral-50 px-6 py-3 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-100"
-                >
-                  View GitHub
-                </a>
+              <div>
+                <h3 className="text-xl font-semibold text-stone-100">
+                  {item.role}
+                </h3>
+                <p className="mt-2 max-w-3xl text-sm leading-7 text-stone-400">
+                  {item.details}
+                </p>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
 
-            {/* Right Content */}
-            <div className="grid gap-4">
-              {contactLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="group rounded-2xl border border-neutral-200 bg-neutral-50 p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <p className="text-xs uppercase tracking-[0.25em] text-neutral-500">
-                    {link.label}
-                  </p>
-
-                  <p className="mt-2 text-lg font-semibold text-neutral-900 transition group-hover:translate-x-1">
-                    {link.value}
-                  </p>
-
-                  <p className="mt-2 text-sm leading-7 text-neutral-600">
-                    {link.note}
-                  </p>
-                </a>
-              ))}
-
-              {/* Phone Number */}
-              <a
-                href="tel:+959759518791"
-                className="group rounded-2xl border border-neutral-200 bg-neutral-50 p-5 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+      <section className="mx-auto w-full max-w-7xl px-5 pb-24 sm:px-8 lg:px-12 lg:pb-32">
+        <div className="editorial-card relative overflow-hidden rounded-[2rem] p-8 sm:p-12 lg:p-16">
+          <div
+            className="pointer-events-none absolute -right-10 -top-32 h-80 w-80 rounded-full border border-indigo-200/30"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute -right-2 -top-24 h-64 w-64 rounded-full border border-indigo-200/30"
+            aria-hidden="true"
+          />
+          <div className="relative max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">
+              Get in touch
+            </p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.06em] sm:text-6xl">
+              Have a project in mind?
+            </h2>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink
+                href={contactLinks[0].href}
+                size="lg"
+                className="bg-stone-900 text-white hover:bg-stone-800"
               >
-                <p className="text-xs uppercase tracking-[0.25em] text-neutral-500">
-                  Phone Number
-                </p>
-
-                <p className="mt-2 text-lg font-semibold text-neutral-900 transition group-hover:translate-x-1">
-                  +959 759518791
-                </p>
-
-                <p className="mt-2 text-sm leading-7 text-neutral-600">
-                  Available for project discussions and opportunities.
-                </p>
-              </a>
+                Get in touch <span aria-hidden="true" className="ml-2">↗</span>
+              </ButtonLink>
+              <ButtonLink
+                href="/experience"
+                size="lg"
+                variant="outline"
+                className="border-slate-300 text-slate-700 hover:border-indigo-300 hover:text-indigo-700"
+              >
+                See my experience
+              </ButtonLink>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </section>
     </main>
   );

@@ -11,7 +11,7 @@ const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
-  { href: "/experience", label: "Skills + Expericence" },
+  { href: "/experience", label: "Skills & Experience" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -21,19 +21,19 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-black/10 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-8 lg:px-10">
+      <header className="sticky top-3 z-50 mx-auto w-[calc(100%-1.5rem)] max-w-7xl">
+        <div className="glass-header flex items-center justify-between rounded-2xl border px-4 py-3 sm:px-6 lg:px-8">
           <Link
             href="/"
             className="flex items-center gap-3"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold tracking-[0.18em] text-white">
-              {profile.shortName}
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-stone-900 bg-[#b7e451] text-xs font-bold tracking-[0.08em] text-stone-900 shadow-[2px_2px_0_#191b17]">
+              WHN
             </div>
             <div className="leading-tight">
-              <p className="text-sm font-semibold text-black">{profile.name}</p>
-              <p className="text-xs text-black/60">{profile.title}</p>
+              <p className="text-sm font-semibold text-stone-100">{profile.name}</p>
+              <p className="text-[11px] text-stone-500">{profile.title}</p>
             </div>
           </Link>
 
@@ -46,10 +46,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                    "rounded-full px-4 py-2.5 text-[13px] font-medium transition-all duration-300",
                     isActive
-                      ? "bg-blue-500  text-white"
-                      : "text-black/70 hover:bg-blue-50 hover:text-black",
+                      ? "bg-indigo-50 text-stone-100"
+                      : "text-stone-400 hover:text-stone-100",
                   )}
                 >
                   {item.label}
@@ -58,7 +58,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 md:hidden">
             <Button
               type="button"
               variant="outline"
@@ -67,7 +67,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav"
-              className="md:hidden"
+              className="border-slate-200 bg-white/70 text-stone-100 md:hidden"
             >
               <svg
                 aria-hidden="true"
@@ -93,9 +93,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               </svg>
             </Button>
           </div>
-          <div className="hidden  md:flex">
-            <ButtonLink href="/cv.pdf" size="lg" target="_blank">
-              View CV
+          <div className="hidden md:flex">
+            <ButtonLink href="/contact" size="lg">
+              Let’s connect <span aria-hidden="true" className="ml-2">↗</span>
             </ButtonLink>
           </div>
         </div>
@@ -103,11 +103,11 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <div
           id="mobile-nav"
           className={cn(
-            "mx-auto max-w-7xl overflow-hidden px-4 transition-all duration-300 sm:px-8 md:hidden",
+            "mx-auto max-w-7xl overflow-hidden px-3 transition-all duration-300 md:hidden",
             mobileMenuOpen ? "max-h-96 pb-4" : "max-h-0 pb-0",
           )}
         >
-          <div className="rounded-2xl border border-black/10 bg-white p-2">
+          <div className="editorial-card mt-2 rounded-3xl p-2 shadow-xl">
             {navItems.map((item) => {
               const isActive = pathname === item.href;
 
@@ -119,8 +119,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                   className={cn(
                     "block rounded-xl px-4 py-3 text-sm font-medium transition-colors",
                     isActive
-                      ? "bg-blue-500 text-white"
-                      : "text-black/70 hover:bg-blue-50 hover:text-black",
+                      ? "bg-stone-900 text-white"
+                      : "text-stone-400 hover:bg-indigo-50 hover:text-indigo-700",
                   )}
                 >
                   {item.label}
@@ -133,12 +133,12 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
       {children}
 
-      <footer className="border-t border-black/10 bg-white/80">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-8 text-sm text-black/60 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+      <footer className="mt-10 border-t border-slate-200/80 bg-white/40 backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-5 py-8 text-sm text-stone-500 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-12">
           <p>
-            {profile.name} | {profile.title}
+            © {new Date().getFullYear()} {profile.name}. Built with care.
           </p>
-          {/* <p>{profile.availability}</p> */}
+          <p>{profile.location} <span className="mx-2 text-cyan-100">/</span> {profile.title}</p>
         </div>
       </footer>
     </>

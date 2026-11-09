@@ -10,12 +10,15 @@ export function PageHero({
   description: string;
 }) {
   return (
-    <section className="mx-auto w-full max-w-7xl px-4 pb-8 pt-14 sm:px-8 lg:px-10">
-      <Badge>{eyebrow}</Badge>
-      <h1 className="mt-6 max-w-4xl text-2xl font-bold leading-tight text-black sm:text-5xl lg:text-6xl">
+    <section className="motion-enter mx-auto w-full max-w-7xl px-5 pb-10 pt-20 sm:px-8 lg:px-12 lg:pt-28">
+      <Badge>
+        <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+        {eyebrow}
+      </Badge>
+      <h1 className="mt-7 max-w-5xl text-4xl font-semibold leading-[1.02] tracking-[-0.06em] text-stone-100 sm:text-6xl lg:text-7xl">
         {title}
       </h1>
-      <p className="mt-5 max-w-3xl text-base leading-8 text-black/65 sm:text-lg">
+      <p className="mt-6 max-w-2xl text-base leading-8 text-stone-400 sm:text-lg">
         {description}
       </p>
     </section>
