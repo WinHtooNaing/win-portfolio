@@ -34,13 +34,21 @@ export function SkillShowcase() {
               onClick={() => setActiveCategory(category)}
               aria-pressed={active}
               className={cn(
-                "shrink-0 rounded-full border px-4 py-2.5 text-xs font-medium transition duration-200",
+                "relative isolate shrink-0 overflow-hidden rounded-full border px-4 py-2.5 text-xs font-medium transition duration-200",
                 active
-                  ? "border-cyan-100 bg-cyan-100 text-slate-950"
+                  ? "border-cyan-100 text-slate-950"
                   : "border-white/10 bg-white/[0.025] text-stone-400 hover:border-white/25 hover:text-stone-100",
               )}
             >
-              {category}
+              {active && (
+                <motion.span
+                  layoutId="active-skill-filter"
+                  className="absolute inset-0 z-0 rounded-full bg-cyan-100"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  aria-hidden="true"
+                />
+              )}
+              <span className="relative z-10">{category}</span>
             </button>
           );
         })}
@@ -55,6 +63,8 @@ export function SkillShowcase() {
               initial={{ opacity: 0, y: 14, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.97 }}
+              whileHover={{ y: -5, scale: 1.015 }}
+              whileTap={{ scale: 0.985 }}
               transition={{ duration: 0.24, delay: index * 0.025 }}
             >
               <Card className="h-full p-5">

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { motion } from "motion/react";
 import { profile } from "../site-data";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -47,13 +48,21 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "rounded-full px-4 py-2.5 text-[13px] font-medium transition-all duration-300",
+                    "relative rounded-full px-4 py-2.5 text-[13px] font-medium transition-all duration-300",
                     isActive
-                      ? "bg-indigo-50 text-stone-100"
+                      ? "text-stone-100"
                       : "text-stone-400 hover:text-stone-100",
                   )}
                 >
-                  {item.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="active-navigation"
+                      className="absolute inset-0 z-0 rounded-full bg-indigo-50"
+                      transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                      aria-hidden="true"
+                    />
+                  )}
+                  <span className="relative z-10">{item.label}</span>
                 </Link>
               );
             })}

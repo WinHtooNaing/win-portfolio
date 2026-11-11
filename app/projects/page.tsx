@@ -20,6 +20,7 @@ export default function ProjectsPage() {
             key={project.title}
             className={index === 0 ? "md:col-span-2" : undefined}
             delay={Math.min(index * 0.08, 0.32)}
+            interactive
           >
             <Card
               className={

@@ -13,6 +13,7 @@ import { Badge } from "./components/ui/badge";
 import { ButtonLink } from "./components/ui/button";
 import { Card } from "./components/ui/card";
 import { Reveal } from "./components/motion/reveal";
+import { HeroArtwork, HeroHeadline } from "./components/motion/hero-artwork";
 
 const featuredProjects = projects.slice(0, 3);
 
@@ -31,13 +32,7 @@ export default function Home() {
               Full-stack developer <span className="mx-1 text-indigo-500">/</span>
               frontend focus
             </p>
-            <h1 className="mt-5 max-w-4xl text-[clamp(3.4rem,7.4vw,6.8rem)] font-semibold leading-[0.94] tracking-[-0.075em] text-stone-100">
-              Full-stack
-              <br />
-              developer,
-              <br />
-              <span className="accent-text">frontend focused.</span>
-            </h1>
+            <HeroHeadline className="mt-5 max-w-4xl text-[clamp(3.4rem,7.4vw,6.8rem)] font-semibold leading-[0.94] tracking-[-0.075em] text-stone-100" />
             <p className="mt-7 max-w-xl text-base leading-8 text-stone-400 sm:text-lg">
               {profile.heroDescription}
             </p>
@@ -61,30 +56,7 @@ export default function Home() {
             delay={0.18}
             animateOnLoad
           >
-            <div className="hero-art" aria-hidden="true">
-              <div className="hero-art__grid" aria-hidden="true" />
-              <div className="hero-art__glow" aria-hidden="true" />
-              <div className="hero-art__orbit hero-art__orbit--outer" aria-hidden="true" />
-              <div className="hero-art__orbit hero-art__orbit--inner" aria-hidden="true" />
-              <div className="hero-art__monogram" aria-hidden="true">
-                WHN<span>.</span>
-              </div>
-              <div className="hero-art__code" aria-hidden="true">
-                <span className="hero-art__code-label">How I approach a product</span>
-                <span><i>const</i> focus = [</span>
-                <span className="hero-art__code-indent">user interface,</span>
-                <span className="hero-art__code-indent">product experience,</span>
-                <span className="hero-art__code-indent">the full stack</span>
-                <span>];</span>
-              </div>
-              <div className="hero-art__tag hero-art__tag--top">
-                <span className="hero-art__tag-dot" />
-                Frontend craft
-              </div>
-              <div className="hero-art__tag hero-art__tag--bottom">
-                Full-stack developer <span aria-hidden="true">↗</span>
-              </div>
-            </div>
+            <HeroArtwork />
             <div className="mt-5 flex items-center justify-between gap-4 px-1 text-xs text-stone-500">
               <span>{profile.name} <span className="mx-1.5 text-indigo-500">/</span> {profile.location}</span>
               <span className="flex shrink-0 items-center gap-2">
@@ -131,7 +103,7 @@ export default function Home() {
         </div>
         <div className="grid gap-5 lg:grid-cols-3">
           {featuredProjects.map((project, index) => (
-            <Reveal key={project.title} delay={index * 0.12}>
+            <Reveal key={project.title} delay={index * 0.12} interactive>
               <Card className="h-full overflow-hidden">
               <Link
                 href={project.liveUrl}
