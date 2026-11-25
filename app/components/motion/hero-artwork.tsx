@@ -1,5 +1,8 @@
 "use client";
 
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import {
   motion,
   useMotionValue,
@@ -7,46 +10,50 @@ import {
   useTransform,
 } from "motion/react";
 
-const headlineVariants = {
-  hidden: {},
-  visible: {
-    transition: { delayChildren: 0.12, staggerChildren: 0.14 },
-  },
-};
-
-const headlineLineVariants = {
-  hidden: { opacity: 0, y: 58, rotateX: -16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
-    transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] as const },
-  },
-};
-
 export function HeroHeadline({ className }: { className: string }) {
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+
+  useGSAP(
+    () => {
+      const lines = headlineRef.current?.querySelectorAll(".hero-headline-word");
+      if (
+        !lines?.length ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        return;
+      }
+
+      gsap.from(lines, {
+        yPercent: 115,
+        rotateX: -18,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.14,
+        delay: 0.12,
+        ease: "power4.out",
+        transformOrigin: "50% 100%",
+        clearProps: "all",
+      });
+    },
+    { scope: headlineRef },
+  );
+
   return (
-    <motion.h1
+    <h1
+      ref={headlineRef}
       className={className}
-      variants={headlineVariants}
-      initial="hidden"
-      animate="visible"
       aria-label="Full-stack developer, frontend focused."
     >
-      <motion.span className="hero-headline-line" variants={headlineLineVariants} aria-hidden="true">
-        Full-stack
-      </motion.span>
-      <motion.span className="hero-headline-line" variants={headlineLineVariants} aria-hidden="true">
-        developer,
-      </motion.span>
-      <motion.span
-        className="hero-headline-line accent-text"
-        variants={headlineLineVariants}
-        aria-hidden="true"
-      >
-        frontend focused.
-      </motion.span>
-    </motion.h1>
+      <span className="hero-headline-line" aria-hidden="true">
+        <span className="hero-headline-word">Full-stack</span>
+      </span>
+      <span className="hero-headline-line" aria-hidden="true">
+        <span className="hero-headline-word">developer,</span>
+      </span>
+      <span className="hero-headline-line accent-text" aria-hidden="true">
+        <span className="hero-headline-word">frontend focused.</span>
+      </span>
+    </h1>
   );
 }
 

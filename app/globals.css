@@ -61,7 +61,13 @@ a {
 
 .hero-headline-line {
   display: block;
+  overflow: hidden;
   transform-origin: 50% 100%;
+}
+
+.hero-headline-word {
+  display: block;
+  will-change: transform, opacity;
 }
 
 .editorial-card {

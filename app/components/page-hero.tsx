@@ -14,6 +14,7 @@ export function PageHero({
     <Reveal
       className="mx-auto w-full max-w-7xl px-5 pb-10 pt-20 sm:px-8 lg:px-12 lg:pt-28"
       animateOnLoad
+      staggerChildren
     >
       <Badge>
         <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />

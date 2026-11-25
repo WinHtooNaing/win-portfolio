@@ -3,7 +3,7 @@ export const profile = {
   shortName: "WHN",
   title: "Full-Stack Developer · Frontend Focus",
   location: "Yangon, Myanmar",
-  availability: "Frontend team · Origin Business Solutions",
+  availability: "Available for full-time work",
   intro:
     "I’m a full-stack developer with a strong focus on frontend engineering. I build responsive, accessible interfaces and bring the backend experience to connect them to reliable application logic and data.",
   heroDescription:
@@ -58,9 +58,7 @@ export const skillCategories = [
   "Frontend",
   "Backend",
   "Database",
-  "DevOps",
   "Tools",
-  "Soft Skills",
 ] as const;
 
 export type SkillCategory = (typeof skillCategories)[number];
@@ -155,17 +153,7 @@ export const skillItems: SkillItem[] = [
     projects: "3+ projects",
     icon: "server",
   },
-  {
-    name: "TypeScript",
-    category: "Tools",
-    description: "Writing typed JavaScript across frontend and backend projects",
-    level: "Advanced",
-    levelTone: "advanced",
-    proficiency: 80,
-    years: "2+ years",
-    projects: "10+ projects",
-    icon: "tool",
-  },
+  
   {
     name: "MongoDB",
     category: "Database",
@@ -221,17 +209,7 @@ export const skillItems: SkillItem[] = [
     projects: "Personal projects",
     icon: "database",
   },
-  {
-    name: "Deployment",
-    category: "DevOps",
-    description: "Deploying and maintaining web projects with Vercel",
-    level: "Strong",
-    levelTone: "strong",
-    proficiency: 75,
-    years: "2+ years",
-    projects: "10+ projects",
-    icon: "cloud",
-  },
+ 
   {
     name: "Git & GitHub",
     category: "Tools",
@@ -244,27 +222,18 @@ export const skillItems: SkillItem[] = [
     icon: "tool",
   },
   {
-    name: "Tailwind CSS",
+    name : "Docker",
     category: "Tools",
-    description: "Building responsive interfaces with utility-first CSS",
-    level: "Advanced",
-    levelTone: "advanced",
-    proficiency: 90,
-    years: "3+ years",
-    projects: "20+ projects",
-    icon: "tool",
-  },
-  {
-    name: "Communication",
-    category: "Soft Skills",
-    description: "Communicating clearly and collaborating with a team",
+    description: "Containerizing applications for consistent development and deployment",
     level: "Strong",
     levelTone: "strong",
-    proficiency: 75,
-    years: "Ongoing",
-    projects: "Team-based work",
-    icon: "soft",
+    proficiency: 70,
+    years: "1+ years",
+    projects: "Personal projects",
+    icon: "tool",
   },
+ 
+  
 ];
 
 export const skills = skillItems.map((skill) => skill.name);
@@ -272,7 +241,7 @@ export const skills = skillItems.map((skill) => skill.name);
 export const experience = [
   {
     period: "Current",
-    role: "Frontend Developer · Origin Business Solutions",
+    role: "Frontend Developer Internship · Origin Business Solutions",
     details:
       "Part of the frontend team, contributing to web interface development and collaborating on product work.",
   },
@@ -348,6 +317,25 @@ export const projects = [
     githubUrl: "https://github.com/WinHtooNaing/Restaurant-Management-System",
     liveUrl: "https://github.com/WinHtooNaing/Restaurant-Management-System",
   },
+  {
+  title: "TechHeaven – CMS & E-Commerce Platform",
+  description:
+    "A full-featured CMS and e-commerce platform featuring a customer-facing landing page and an admin dashboard for managing products, categories, collections, and website content. Developed the frontend with React, TypeScript, and modern state management tools, integrating REST APIs powered by NestJS and Prisma.",
+  stack: [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "TanStack Query",
+    "Zustand",
+    "NestJS",
+    "Prisma"
+  ],
+  image: "/projects/tech.png",
+  imageAlt: "Preview of TechHeaven CMS and E-Commerce Platform",
+  githubUrl: "https://github.com/WinHtooNaing/cms-landing-page",
+  liveUrl: "https://cms-landing-page-iota.vercel.app",
+}
 ];
 
 export const contactLinks = [

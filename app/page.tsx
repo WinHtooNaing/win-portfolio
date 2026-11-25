@@ -166,7 +166,7 @@ export default function Home() {
       </section>
 
       <section className="border-y border-slate-200/80 bg-white/40 backdrop-blur-xl">
-        <Reveal className="mx-auto grid w-full max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-12 lg:py-24">
+        <Reveal className="mx-auto grid w-full max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:px-12 lg:py-24" staggerChildren>
           <div>
             <Badge>How I work</Badge>
             <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.055em] text-stone-100 sm:text-5xl">
@@ -216,17 +216,16 @@ export default function Home() {
               the backend and into a complete product.
             </p>
           </div>
-          <div className="flex flex-wrap content-start gap-2.5">
-            {skills.map((skill, index) => (
-              <Reveal key={skill} delay={Math.min(index * 0.035, 0.4)}>
+          <Reveal className="flex flex-wrap content-start gap-2.5" staggerChildren>
+            {skills.map((skill) => (
               <span
+                key={skill}
                 className="glass-chip rounded-full px-4 py-2.5 text-sm text-stone-300 transition hover:border-indigo-200 hover:text-indigo-700"
               >
                 {skill}
               </span>
-              </Reveal>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
